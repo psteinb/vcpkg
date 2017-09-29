@@ -1,0 +1,4 @@
+Source: ffmpeg4sqy
+Version: 3.0.9
+Description: a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.
+  This library fits the needs of sqeazy and was build with this in mind.
