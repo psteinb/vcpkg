@@ -1,0 +1,13 @@
+--- src-4.0.8/libtiff/CMakeLists.txt	2017-10-17 10:32:21.919742800 +0200
++++ src-original-4.0.8/libtiff/CMakeLists.txt	2015-09-01 04:40:53.000000000 +0200
+@@ -118,10 +118,6 @@
+             ${tiff_port_SOURCES} libtiff.def)
+ target_link_libraries(tiff ${TIFF_LIBRARY_DEPS})
+ set_target_properties(tiff PROPERTIES SOVERSION ${SO_COMPATVERSION})
+-if(NOT ${BUILD_SHARED_LIBS} AND ${CMAKE_CXX_COMPILER_ID} MATCHES "MSVC" )
+-	target_compile_options(tiff PUBLIC "/MT")
+-endif()
+-
+ if(NOT CYGWIN)
+     # This property causes shared libraries on Linux to have the full version
+     # encoded into their final filename.  We disable this on Cygwin because
