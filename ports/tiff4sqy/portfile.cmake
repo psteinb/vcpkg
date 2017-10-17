@@ -29,6 +29,8 @@ vcpkg_configure_cmake(
         -DBUILD_TESTS=OFF
         -Djbig=OFF # This is disabled by default due to GPL/Proprietary licensing.
         -Djpeg12=OFF
+        # OPTIONS_RELEASE -DOPTIMIZE=1
+        # OPTIONS_DEBUG -DDEBUGGABLE=1
 )
 
 vcpkg_install_cmake()
@@ -40,7 +42,7 @@ file(REMOVE_RECURSE
 )
 file(INSTALL
     ${SOURCE_PATH}/COPYRIGHT
-    DESTINATION ${CURRENT_PACKAGES_DIR}/share/tiff
+    DESTINATION ${CURRENT_PACKAGES_DIR}/share/tiff4sqy
     RENAME copyright
 )
 
