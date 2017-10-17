@@ -25,6 +25,10 @@ vcpkg_download_distfile(ARCHIVE
     SHA512 010535db3f1eb5598c17a31dc27d466dd98c2c05cd9017d21dc569d93bf25ad599ba27dd5a88ba7cc1d8e3f437965c5dde9a6ae95e0f8958c57476a3f97ca1fc
 )
 vcpkg_extract_source_archive(${ARCHIVE})
+vcpkg_apply_patches(
+    SOURCE_PATH ${SOURCE_PATH}
+    PATCHES ${CMAKE_CURRENT_LIST_DIR}/fix_x265_check_in_configure.patch
+)
 
 vcpkg_find_acquire_program(YASM)
 get_filename_component(YASM_EXE_PATH ${YASM} DIRECTORY)
@@ -157,5 +161,10 @@ vcpkg_copy_pdbs()
 
 # Handle copyright
 # TODO: Examine build log and confirm that this license matches the build output
-file(COPY ${SOURCE_PATH}/COPYING.LGPLv2.1 DESTINATION ${CURRENT_PACKAGES_DIR}/share/ffmpeg)
-file(RENAME ${CURRENT_PACKAGES_DIR}/share/ffmpeg/COPYING.LGPLv2.1 ${CURRENT_PACKAGES_DIR}/share/ffmpeg/copyright)
+#file(COPY ${SOURCE_PATH}/COPYING.LGPLv2.1 DESTINATION ${CURRENT_PACKAGES_DIR}/share/ffmpeg4sqy)
+#file(RENAME ${CURRENT_PACKAGES_DIR}/share/ffmpeg4sqy/COPYING.LGPLv2.1 ${CURRENT_PACKAGES_DIR}/share/ffmpeg4sqy/copyright)
+file(INSTALL
+    ${SOURCE_PATH}/COPYING.LGPLv2.1
+    DESTINATION ${CURRENT_PACKAGES_DIR}/share/ffmpeg4sqy
+    RENAME copyright
+)
